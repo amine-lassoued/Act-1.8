@@ -1,21 +1,24 @@
 package models;
 
-public abstract class Predateur {
+import interfaces.PredateurAction;
+
+public abstract class Predateur implements PredateurAction {
 
 	private int force ;
-	private Son son;
 	private CategorieAge categorieAge;
 	private Nourriture nourriture;
 	private GroupeSolitaire groupeSolitaire;
 	private Sexe sexe;
 	
 	
+	
 	enum GroupeSolitaire {groupe ,solitaire };
 	enum Nourriture {viande,omnivore};
 	enum CategorieAge {jeune , adulte, vieux };	
-	enum Son {rugit,hurle};
 	enum Sexe {femelle,male}
 	
+	public Predateur() {
+	}
 	
 	public int getForce() {
 		return force;
@@ -23,12 +26,7 @@ public abstract class Predateur {
 	public void setForce(int force) {
 		this.force = force;
 	}
-	public Son getSon() {
-		return son;
-	}
-	public void setSon(Son son) {
-		this.son = son;
-	}
+
 	public CategorieAge getCategorieAge() {
 		return categorieAge;
 	}
@@ -53,4 +51,10 @@ public abstract class Predateur {
 	public void setSexe(Sexe sexe) {
 		this.sexe = sexe;
 	};
+	
+	@Override
+	public String toString() {
+		return "Predateur [force=" + force + ", categorieAge=" + categorieAge + ", nourriture="
+				+ nourriture + ", groupeSolitaire=" + groupeSolitaire + ", sexe=" + sexe + "]";
+	}
 }
